@@ -15,3 +15,6 @@ class Tile(object):
             if (tile.x, tile.y) == coordinates:
                 return tile
         return self
+
+    def has_lever(self):
+        return self.coins > 0
