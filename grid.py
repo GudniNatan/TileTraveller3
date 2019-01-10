@@ -12,6 +12,7 @@ class Grid(object):
         self.coins = coins
         self.make_tiles()
         self.player = Player(self.tiles[player_location], player_coins)
+        self.make_walls()
 
     def make_tiles(self):
         width = self.width
@@ -22,7 +23,7 @@ class Grid(object):
             for y in range(1, height + 1):
                 wintile = (x, y) == (width, 1)
                 tile = Tile(
-                    x, y, self.coins[(x, y)], wintile
+                    x, y, self.coins.get((x, y), 0), wintile
                 )
                 tiles[(x, y)] = tile
 
@@ -36,4 +37,4 @@ class Grid(object):
                 if neighbor in self.tiles:
                     for wall in self.walls:
                         if (tile.x, tile.y) not in wall and neighbor not in wall:
-                            tile.neighbors.append(neighbor)
+                            tile.neighbors.append(self.tiles[neighbor])
