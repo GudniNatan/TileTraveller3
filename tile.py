@@ -1,9 +1,9 @@
 class Tile(object):
-    def __init__(self, x: int, y: int, neighbors: dict,
-                 coins: int, win_tile: bool):
+    def __init__(self, x: int, y: int, coins: int,
+                 win_tile: bool):
         self.x = x
         self.y = y
-        self.neighbors = neighbors
+        self.neighbors = list()
         self.coins = coins
         self.win_tile = win_tile
 
