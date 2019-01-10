@@ -4,7 +4,7 @@ from tile import Tile
 class Grid(object):
     def __init__(self, width, height, walls, coins,
                  player_location=(1, 1), player_coins=0):
-        self.tiles = list()
+        self.tiles = dict()
         self.width = width
         self.height = height
         self.walls = walls
@@ -24,4 +24,4 @@ class Grid(object):
                 tile = Tile(
                     x, y, self.coins[(x, y)]
                 )
-                tiles.append(tile)
+                tiles[(x, y)] = tile
