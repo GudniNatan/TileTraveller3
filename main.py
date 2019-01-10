@@ -5,7 +5,8 @@ def load_game(filename):
     with open(filename) as a_file:
         file_content = [line.strip() for line in a_file]
     # [width height,[walls], [coins],[playerlocation],[playercoins]]
-    width, height = [int(x) for x in file_content[0]]
+    print(file_content)
+    width, height = [int(x) for x in file_content[0].split()]
     walls = eval(file_content[1])
     coins = eval(file_content[2])
     playerlocation = eval(file_content[3])
@@ -35,7 +36,7 @@ def main():
                 player.tile.coins = 0
                 player.coins += coins
                 print("You received {} coins, your total is now {}.".format(coins, player.coins))
-        print("You can travel: ", player.look())
+        print("You can travel:", player.look())
         direction = input("Direction: ")
         old_tile = player.tile
         player.move(direction)
