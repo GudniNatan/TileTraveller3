@@ -25,3 +25,15 @@ class Grid(object):
                     x, y, self.coins[(x, y)]
                 )
                 tiles[(x, y)] = tile
+
+    def make_walls(self):
+        for tile in self.tiles.values():
+            proposed_neighbors = [
+                (tile.x-1, tile.y), (tile.x + 1, tile.y),
+                (tile.x, tile.y-1), (tile.x, tile.y+1)
+            ]
+            for neighbor in proposed_neighbors:
+                if neighbor in self.tiles:
+                    for wall in self.walls:
+                        if (tile.x, tile.y) not in wall and neighbor not in wall:
+                            tile.neighbors.append(neighbor)
