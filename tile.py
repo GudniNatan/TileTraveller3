@@ -9,3 +9,10 @@ class Tile(object):
 
     def set_neighbors(self, neighbors):
         self.neighbors = neighbors
+    
+    def has_lever(self):
+        if self.coins > 0:
+            return True
+        else:
+            return False
+
