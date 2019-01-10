@@ -3,7 +3,7 @@ class Tile(object):
                  win_tile: bool):
         self.x = x
         self.y = y
-        self.neighbors = list()
+        self.neighbors = set()
         self.coins = coins
         self.win_tile = win_tile
 

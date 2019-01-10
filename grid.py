@@ -37,4 +37,4 @@ class Grid(object):
                 if neighbor in self.tiles:
                     for wall in self.walls:
                         if (tile.x, tile.y) not in wall and neighbor not in wall:
-                            tile.neighbors.append(self.tiles[neighbor])
+                            tile.neighbors.add(self.tiles[neighbor])
