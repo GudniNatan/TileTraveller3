@@ -34,3 +34,6 @@ class Player(object):
 
     def add_coins(self, amount):
         self.coins += amount
+
+    def get_location(self):
+        return (self.x, self.y)

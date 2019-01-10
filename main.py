@@ -5,7 +5,6 @@ def load_game(filename):
     with open(filename) as a_file:
         file_content = [line.strip() for line in a_file]
     # [width height,[walls], [coins],[playerlocation],[playercoins]]
-    print(file_content)
     width, height = [int(x) for x in file_content[0].split()]
     walls = eval(file_content[1])
     coins = eval(file_content[2])
@@ -14,8 +13,20 @@ def load_game(filename):
     return Grid(width, height, walls, coins, playerlocation, playercoins)
 
 
-def save_game(filename):
-    pass
+def save_game(filename, grid):
+    width, height, walls = grid.width, grid.height, grid.walls
+    coins = {(tile.x, tile.y): tile.coins for tile in grid.tiles.values()}
+    playerlocation = self.grid.player.get_location()
+    playercoins = self.grid.player.coins
+    save_string = "\n".join(
+        str(width) + " " + str(height),
+        str(walls),
+        str(coins),
+        str(playerlocation),
+        str(playercoins)
+    )
+    with open(filename, "w") as fp:
+        fp.write(save_string)
 
 
 def main():
@@ -27,7 +38,7 @@ def main():
     player = grid.player
     # game loop goes here
     win = False
-    while player.tile.win_tile == False:
+    while player.tile.win_tile is False:
         # print lever info
         if player.tile.has_lever():
             pull_lever = input("Pull a lever (y/n): ")

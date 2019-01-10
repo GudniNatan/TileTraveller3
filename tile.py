@@ -18,3 +18,11 @@ class Tile(object):
 
     def has_lever(self):
         return self.coins > 0
+
+    def get_location(self):
+        return (self.x, self.y)
+
+    def __eq__(self, other):
+        if isinstance(other, Tile):
+            return self.get_location() == other.get_location()
+        return self.get_location() == other
