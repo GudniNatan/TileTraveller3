@@ -26,6 +26,7 @@ def main():
 
 
     # game loop goes here
+    win = False
     while win == False:
         # do something
         pass
