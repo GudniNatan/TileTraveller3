@@ -23,13 +23,25 @@ def main():
 
     grid = load_game(filename)
 
-
+    player = grid.player
     # game loop goes here
     win = False
-    while win == False:
-        # do something
+    while player.tile.win_tile == False:
         # print lever info
-        
-        pass
+        if player.tile.has_lever():
+            pull_lever = input("Pull a lever (y/n): ")
+            if pull_lever.lower() == "y":
+                coins = player.tile.coins
+                player.tile.coins = 0
+                player.coins += coins
+                print("You received {} coins, your total is now {}.".format(coins, player.coins))
+        print("You can travel: ", player.look())
+        direction = input("Direction: ")
+        old_tile = player.tile
+        player.move(direction)
+        if player.tile is old_tile:
+            print("Not a valid direction!")
+    print("Victory!")
+
 
 main()

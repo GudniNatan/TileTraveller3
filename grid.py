@@ -22,6 +22,6 @@ class Grid(object):
             for y in range(1, height + 1):
                 wintile = (x, y) == (width, 1)
                 tile = Tile(
-                    x, y, self.coins[(x, y)]
+                    x, y, self.coins[(x, y)], wintile
                 )
                 tiles[(x, y)] = tile
