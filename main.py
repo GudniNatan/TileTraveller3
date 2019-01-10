@@ -11,10 +11,15 @@ def save_game(filename):
 
 def main():
     # read game file location and load game
-    
-    with open('levels/demo.txt') as a_file:
+    filename = input('Enter filename: ')
+    with open(filename) as a_file:
         file_content = [line.strip() for line in a_file]
-    print(file_content)
+    # [width height,[walls], [coins],[playerlocation],[playercoins]]
+    width, height = file_content[0].split()
+    walls = file_content[1]
+    coins = file_content[2]
+    playerlocation = file_content[3]
+    playercoins = file_content[4]
     
 
             
