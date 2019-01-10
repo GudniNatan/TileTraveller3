@@ -1,4 +1,5 @@
 from tile import Tile
+from player import Player
 
 
 class Grid(object):
@@ -9,9 +10,8 @@ class Grid(object):
         self.height = height
         self.walls = walls
         self.coins = coins
-        self.player_location = player_location
-        self.player_coins = player_coins
         self.make_tiles()
+        self.player = Player(self.tiles[player_location], player_coins)
 
     def make_tiles(self):
         width = self.width

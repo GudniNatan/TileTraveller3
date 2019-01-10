@@ -9,3 +9,12 @@ class Tile(object):
 
     def set_neighbors(self, neighbors):
         self.neighbors = neighbors
+
+    def get_neighbor(self, coordinates: tuple):
+        for tile in self.neighbors:
+            if (tile.x, tile.y) == coordinates:
+                return tile
+        return self
+
+    def has_lever(self):
+        return self.coins > 0
